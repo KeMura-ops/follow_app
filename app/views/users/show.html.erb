@@ -1,0 +1,17 @@
+<h3><%= @user.email %></h3>
+
+<% if user_signed_in? && current_user != @user %>
+  <% if current_user.active_relationships.exists?(target_user_id: @user.id) %>
+    <%= link_to 'フォロー解除', [@user, :follow], method: :delete %>
+  <% else %>
+    <%= link_to 'フォローする', [@user, :follow], method: :post %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= link_to 'フォロー',  [@user, :followings] %>
+</div>
+
+<div>
+  <%= link_to 'フォロワー',  [@user, :followers] %>
+</div>

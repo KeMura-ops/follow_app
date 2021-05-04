@@ -1,0 +1,11 @@
+<h3>home</h3>
+
+<div>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+</div>
+
+<% User.all.each do |user| %>
+  <div>
+    <%= link_to user.email, [user] %>
+  </div>
+<% end %>
